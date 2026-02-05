@@ -7,7 +7,9 @@
 <title>AnaCoo Tailor - Modern Bespoke Tailoring</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins','Noto Sans SC',sans-serif;-webkit-tap-highlight-color:transparent;}
+<style>
+html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins','Noto Sans SC',sans-serif;-webkit-tap-highlight-color:transparent;}
 body{
     font-family: Arial, sans-serif;
     margin: 0;
@@ -354,7 +356,7 @@ nav a:hover {
 /* Services Section with Background */
 .services-section {
     background: linear-gradient(rgba(249,243,244,0.92), rgba(249,243,244,0.92)),
-                url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+                url('https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=1600&q=80') center/cover;
     position: relative;
 }
 
@@ -756,23 +758,6 @@ nav a:hover {
     transform: scale(1.03);
     filter: brightness(1);
     box-shadow: 0 10px 25px rgba(109,93,107,0.2);
-}
-
-/* Gallery Section with Background */
-.gallery-section {
-    background: linear-gradient(rgba(249,243,244,0.96), rgba(249,243,244,0.96)),
-                url('https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
-}
-
-.cta {
-    background: linear-gradient(rgba(109,93,107,0.92), rgba(138,122,140,0.92)),
-                url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80') center/cover;
-    color: var(--white);
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
-    margin-top: 40px;
 }
 
 .cta h3 {
@@ -1937,6 +1922,1101 @@ p{margin:0 0 12px;}
   fill:#fff;
 }
 
+
+/* ============================= */
+/* Needle-thread line draw (CTA) */
+/* ============================= */
+.appointment-title.needle a{
+  position:relative;
+  display:inline-block;
+  padding-bottom:16px;
+  color:inherit;
+  text-decoration:none;
+}
+.thread-line{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:14px;
+  pointer-events:none;
+}
+.thread-line svg{width:100%;height:100%;}
+.thread-path{
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-dasharray:300;
+  stroke-dashoffset:300;
+}
+.needle-dot{
+  fill:var(--primary);
+  opacity:0;
+  filter:drop-shadow(0 0 0 rgba(216,167,177,0));
+}
+.needle.animate .thread-path{animation:threadDraw .9s ease-out forwards;}
+.needle.animate .needle-dot{animation:needleShimmer 1.1s ease-out forwards;}
+@keyframes threadDraw{to{stroke-dashoffset:0;}}
+@keyframes needleShimmer{
+  0%{opacity:0;filter:drop-shadow(0 0 0 rgba(216,167,177,0));}
+  40%{opacity:1;filter:drop-shadow(0 0 6px rgba(216,167,177,.55));}
+  65%{filter:drop-shadow(0 0 12px rgba(255,225,180,.8));}
+  100%{opacity:.85;filter:drop-shadow(0 0 0 rgba(216,167,177,0));}
+}
+
+/* ================================= */
+/* Opening Hours Card (Appointment)  */
+/* ================================= */
+.opening-hours-card{
+  margin:22px auto 0;
+  padding:18px 18px;
+  background:rgba(255,255,255,0.92);
+  border-radius:14px;
+  border:1px solid rgba(216,167,177,0.2);
+  box-shadow:0 10px 28px rgba(109,93,107,0.08);
+  max-width:520px;
+  text-align:left;
+}
+.opening-hours-card .hours-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+.opening-hours-card h4{
+  margin:0;
+  font-size:18px;
+  color:var(--dark);
+}
+.status-badge{
+  font-size:12px;
+  font-weight:600;
+  padding:6px 12px;
+  border-radius:999px;
+  letter-spacing:.2px;
+  white-space:nowrap;
+}
+.status-open{
+  background:rgba(159,201,181,0.25);
+  color:#2f6b55;
+  border:1px solid rgba(159,201,181,0.6);
+}
+.status-closed{
+  background:rgba(216,167,177,0.18);
+  color:#8a4f59;
+  border:1px solid rgba(216,167,177,0.5);
+}
+.opening-hours-card ul{list-style:none;padding:0;margin:0;}
+.opening-hours-card li{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  font-size:14px;
+  color:var(--text);
+}
+.opening-hours-card .note{
+  margin:10px 0 0;
+  font-size:13px;
+  opacity:.78;
+}
+
+
+#contact{scroll-margin-top:120px;}
+
+/* ================================= */
+/* Appointment date/time selection   */
+/* ================================= */
+.appt-form{
+  margin:16px auto 0;
+  max-width:520px;
+}
+.appt-row{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+
+.appt-field{
+  background:rgba(255,255,255,0.92);
+  border:1px solid rgba(216,167,177,0.18);
+  border-radius:12px;
+  padding:12px 12px;
+  box-shadow:0 8px 20px rgba(109,93,107,0.06);
+}
+.appt-field label{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  color:var(--dark);
+  margin-bottom:8px;
+}
+.appt-field input,
+.appt-field select{
+  width:100%;
+  height:44px;
+  border-radius:10px;
+  border:1px solid rgba(109,93,107,0.18);
+  background:#fff;
+  color:var(--text);
+  padding:0 12px;
+  font-size:14px;
+}
+.appt-field input:focus,
+.appt-field select:focus{
+  outline:3px solid rgba(216,167,177,0.35);
+  border-color:rgba(216,167,177,0.55);
+}
+.appt-hint{
+  margin:10px 2px 0;
+  font-size:13px;
+  opacity:.78;
+}
+.appt-error{
+  margin:10px 2px 0;
+  font-size:13px;
+  color:#8a4f59;
+  font-weight:600;
+  display:none;
+}
+.appt-error.show{ display:block; }
+
+
+/* ============================= */
+/* Luxury styling overrides       */
+/* ============================= */
+
+/* Softer, premium card look */
+.opening-hours-card,
+.appt-field{
+  background: linear-gradient(135deg, rgba(255,255,255,0.86) 0%, rgba(249,243,244,0.86) 100%) !important;
+  border: 1px solid rgba(216,167,177,0.28) !important;
+  box-shadow:
+    0 18px 55px rgba(109,93,107,0.10),
+    0 6px 18px rgba(216,167,177,0.10) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Elegant top accent line (champagne/rose) */
+.opening-hours-card::before{
+  content:'';
+  display:block;
+  height:3px;
+  border-radius:999px;
+  margin:-6px 0 14px;
+  background: linear-gradient(90deg,
+    rgba(216,167,177,0.00) 0%,
+    rgba(216,167,177,0.85) 30%,
+    rgba(255,225,180,0.85) 70%,
+    rgba(216,167,177,0.00) 100%);
+}
+
+/* Header typography */
+.opening-hours-card h4,
+.appt-field label{
+  letter-spacing: 0.2px;
+}
+
+/* Status badge = pill with subtle shine */
+.status-badge{
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+}
+.status-badge::after{
+  content:'';
+  position:absolute;
+  inset:-40% -30%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.0), rgba(255,255,255,0.35), rgba(255,255,255,0.0));
+  transform: translateX(-60%) rotate(12deg);
+  animation: badgeShine 2.8s ease-in-out infinite;
+  opacity: 0.55;
+}
+@keyframes badgeShine{
+  0%, 60% { transform: translateX(-60%) rotate(12deg); }
+  100%    { transform: translateX(60%) rotate(12deg); }
+}
+
+/* Inputs: refined borders + inner glow */
+.appt-field input,
+.appt-field select{
+  border: 1px solid rgba(109,93,107,0.18) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.92) !important;
+}
+.appt-field input:hover,
+.appt-field select:hover{
+  border-color: rgba(216,167,177,0.55) !important;
+}
+.appt-field input:focus,
+.appt-field select:focus{
+  outline: 0 !important;
+  border-color: rgba(216,167,177,0.70) !important;
+  box-shadow:
+    0 0 0 4px rgba(216,167,177,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.65);
+}
+
+/* Make the date/time block feel like one elegant unit */
+.appt-form{
+  margin-top: 14px !important;
+}
+.appt-row{
+  gap: 14px !important;
+}
+
+/* Hint text = small, refined */
+.appt-hint{
+  margin-top: 12px !important;
+  font-size: 12.8px !important;
+  letter-spacing: 0.15px;
+}
+
+/* Tighten list row alignment */
+.opening-hours-card li{
+  align-items: baseline;
+}
+
+/* Mobile: a bit more breathing room */
+@media (max-width:480px){
+  .opening-hours-card{ padding: 18px 16px !important; }
+  .appt-field{ padding: 12px 12px !important; }
+}
+
+
+/* ================================= */
+/* WhatsApp CTA inside appointment    */
+/* ================================= */
+.appointment-action{
+  margin-top: 26px;
+  text-align: center;
+}
+.appointment-action .appointment-btn,
+.appointment-action .btn{
+  min-width: 280px;
+}
+/* Disabled look (until date & time selected) */
+a[data-disabled="true"]{
+  opacity: 0.55;
+  pointer-events: none;
+  filter: grayscale(10%);
+}
+
+
+/* ============================= */
+/* Appointment box alignment     */
+/* ============================= */
+.appointment-box{
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.opening-hours-card,
+.appt-form,
+.appointment-action{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure internal cards align perfectly */
+.appt-row{
+  margin: 0;
+}
+
+.opening-hours-card{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.appointment-action{
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ============================= */
+/* Date & Time side-by-side      */
+/* ============================= */
+
+/* Default: side by side */
+.appt-row{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Stack only on small mobile */
+@media (max-width: 520px){
+  .appt-row{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+
+/* ============================= */
+/* FORCE Date & Time side-by-side */
+/* ============================= */
+
+/* Ensure parent allows horizontal layout */
+.appt-form{
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hard override any previous layout */
+.appt-row{
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  column-gap: 16px !important;
+  row-gap: 0 !important;
+}
+
+/* Prevent children from forcing full width rows */
+.appt-field{
+  width: 100% !important;
+}
+
+/* Stack ONLY on small screens */
+@media (max-width: 520px){
+  .appt-row{
+    grid-template-columns: 1fr !important;
+    row-gap: 12px !important;
+  }
+}
+
+
+/* ============================= */
+/* ALIGN Appointment components  */
+/* ============================= */
+.appointment-box{
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Keep everything aligned to same column width */
+.opening-hours-card,
+.appt-form,
+.appointment-action{
+  max-width: 520px;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+/* Form: stack sections neatly */
+.appt-form{
+  text-align: left;
+}
+
+/* Date & Time: side-by-side on desktop */
+.appt-row{
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: 14px !important;
+  align-items: start;
+}
+
+/* Button: always centered UNDER the fields (no side floating) */
+.appointment-action{
+  display: block !important;
+  text-align: center;
+  margin-top: 18px !important;
+}
+.appointment-action a{
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Stack only on small screens */
+@media (max-width: 520px){
+  .appt-row{
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+
+/* ============================= */
+/* Custom time picker (no native sheet) */
+/* ============================= */
+.time-picker{ position: relative; }
+.time-display{
+  width:100%;
+  height:44px;
+  border-radius:10px;
+  border:1px solid rgba(109,93,107,0.18);
+  background: rgba(255,255,255,0.92);
+  color: var(--text);
+  padding: 0 12px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  cursor:pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+}
+.time-display:focus{
+  outline:0;
+  border-color: rgba(216,167,177,0.70);
+  box-shadow: 0 0 0 4px rgba(216,167,177,0.18), inset 0 1px 0 rgba(255,255,255,0.65);
+}
+.time-display-text{ display:none; }
+body:not(.chinese-lang) .time-display-text.english{ display:inline; }
+body.chinese-lang .time-display-text.chinese{ display:inline; }
+
+.time-dropdown{
+  position:absolute;
+  left:0;
+  right:0;
+  top: calc(100% + 8px);
+  background: linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(249,243,244,0.96) 100%);
+  border:1px solid rgba(216,167,177,0.28);
+  border-radius:12px;
+  box-shadow: 0 18px 55px rgba(109,93,107,0.14), 0 6px 18px rgba(216,167,177,0.12);
+  max-height: 260px;
+  overflow:auto;
+  padding: 8px;
+  display:none;
+  z-index: 50;
+}
+.time-dropdown.open{ display:block; }
+.time-option{
+  width:100%;
+  border:0;
+  background: transparent;
+  padding: 10px 10px;
+  border-radius:10px;
+  text-align:left;
+  cursor:pointer;
+  font-size:14px;
+  color: var(--text);
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.time-option:hover{
+  background: rgba(216,167,177,0.16);
+}
+.time-option.active{
+  background: rgba(216,167,177,0.22);
+  font-weight:600;
+}
+.time-caret{ opacity:.7; }
+
+
+/* ============================= */
+/* Sleek alignment polish        */
+/* ============================= */
+
+/* Appointment card tighter + more premium */
+.opening-hours-card{
+  max-width: 720px !important;
+  padding: 26px 28px !important;
+  border-radius: 20px !important;
+}
+
+/* Header row: align title + badge perfectly */
+.opening-hours-card .hours-header{
+  margin-bottom: 18px !important;
+}
+.opening-hours-card .hours-header h4{
+  font-size: 20px !important;
+  font-weight: 700;
+}
+.status-badge{
+  font-size: 12px !important;
+  padding: 7px 14px !important;
+}
+
+/* Date/Time fields: equal height and aligned */
+.appt-row{
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+.appt-field{
+  padding: 14px 14px !important;
+  border-radius: 16px !important;
+}
+.appt-field label{
+  margin-bottom: 10px !important;
+  font-size: 13px !important;
+  opacity: .85;
+}
+
+/* Inputs uniform */
+.appt-field input{
+  height: 48px !important;
+  border-radius: 12px !important;
+}
+.time-display{
+  height: 48px !important;
+  border-radius: 12px !important;
+}
+
+/* CTA: full width, centered, refined */
+.appointment-action{
+  margin-top: 18px !important;
+}
+.appointment-action a{
+  height: 54px;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  border-radius: 999px !important;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* Opening hours text: align to center but keep readable */
+.opening-hours-card ul,
+.opening-hours-card li{
+  text-align: left;
+}
+.opening-hours-card li{
+  margin-top: 18px;
+  font-size: 15px;
+}
+
+/* Below-card text: tighten spacing + consistent opacity */
+#contact .contact-info p,
+.opening-hours-card .note{
+  opacity: .82 !important;
+}
+
+/* Reduce extra gaps around appointment section */
+#contact{
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+
+/* ============================= */
+/* Floating WhatsApp Button      */
+/* ============================= */
+.wa-float{
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+  z-index: 9999;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.wa-float svg{
+  width: 28px;
+  height: 28px;
+}
+.wa-float:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.30);
+}
+
+/* Mobile spacing */
+@media (max-width: 480px){
+  .wa-float{
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+
+/* ============================= */
+/* Floating WhatsApp Enhancements */
+/* ============================= */
+.wa-float{
+  animation: waPulse 3.2s ease-in-out infinite;
+}
+.wa-float:hover{
+  animation: none;
+}
+@keyframes waPulse{
+  0%   { box-shadow: 0 14px 30px rgba(0,0,0,0.25); transform: translateY(0); }
+  55%  { box-shadow: 0 18px 40px rgba(0,0,0,0.28); transform: translateY(-1px); }
+  100% { box-shadow: 0 14px 30px rgba(0,0,0,0.25); transform: translateY(0); }
+}
+
+/* Auto-hide when in-card WhatsApp CTA is visible */
+.wa-float.wa-hide{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+.wa-float{
+  transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+}
+
+
+/* ============================= */
+/* Time dropdown: 100% solid      */
+/* ============================= */
+.opening-hours-card{
+  overflow: visible !important;
+}
+
+/* Keep picker above card layers */
+.time-picker{
+  position: relative;
+  z-index: 50;
+}
+
+/* Make dropdown fully opaque (match date picker feel) */
+.time-dropdown{
+  background: #ffffff !important;
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.18),
+    0 6px 18px rgba(0,0,0,0.12) !important;
+
+  z-index: 99999 !important;
+}
+
+
+/* ============================= */
+/* Send CTA behind dropdown      */
+/* ============================= */
+
+/* Keep time dropdown on top */
+.time-dropdown{
+  z-index: 99999 !important;
+}
+
+/* Push CTA behind interaction layer */
+.appointment-action{
+  position: relative;
+  z-index: 1 !important;
+}
+
+/* When disabled, keep CTA visually behind */
+#whatsappBookBtn[data-disabled="true"]{
+  position: relative;
+  z-index: 0 !important;
+}
+
+
+/* ============================= */
+/* Hide CTA when time dropdown open */
+/* ============================= */
+body.time-open .appointment-action{
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(6px);
+}
+body.time-open .appointment-action a{
+  box-shadow: none !important;
+}
+
+
+/* ============================= */
+/* Luxury global alignment pass  */
+/* ============================= */
+
+/* Typography smoothing */
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent content width */
+.section .container,
+.container{
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Headings: cleaner tracking */
+h1,h2,h3,h4{
+  letter-spacing: 0.2px;
+}
+
+/* Make appointment hero heading spacing */
+#contact h2,
+#contact h1,
+#contact .section-title{
+  margin-bottom: 20px !important;
+}
+
+/* Appointment card: centered and balanced */
+.opening-hours-card{
+  max-width: 720px !important;
+  margin: 18px auto 0 !important;
+  padding: 28px 30px !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(216,167,177,0.26) !important;
+  box-shadow:
+    0 22px 70px rgba(60,50,62,0.14),
+    0 10px 24px rgba(216,167,177,0.10) !important;
+}
+
+/* Form grid */
+.appt-form{ max-width: 720px !important; margin: 0 auto !important; }
+.appt-row{ gap: 18px !important; }
+.appt-field{
+  border-radius: 18px !important;
+  padding: 16px 16px !important;
+  box-shadow:
+    0 14px 34px rgba(60,50,62,0.10),
+    0 6px 14px rgba(216,167,177,0.08) !important;
+}
+
+/* Input + picker surface */
+.appt-field input,
+.time-display{
+  height: 50px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(109,93,107,0.18) !important;
+}
+
+/* Labels */
+.appt-field label{
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  opacity: 0.80;
+  margin-bottom: 10px !important;
+}
+
+/* Dropdown: premium */
+.time-dropdown{
+  border-radius: 14px !important;
+  border: 1px solid rgba(216,167,177,0.24) !important;
+  box-shadow:
+    0 26px 70px rgba(0,0,0,0.18),
+    0 8px 22px rgba(0,0,0,0.12) !important;
+}
+.time-option{
+  padding: 11px 12px !important;
+  border-radius: 12px !important;
+}
+.time-option:hover{ background: rgba(216,167,177,0.14) !important; }
+.time-option.active{ background: rgba(216,167,177,0.20) !important; }
+
+/* CTA button: sleek pill, consistent width */
+.appointment-action{
+  margin-top: 20px !important;
+}
+.appointment-action a{
+  height: 56px !important;
+  max-width: 720px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.25px !important;
+  box-shadow:
+    0 18px 44px rgba(216,167,177,0.20),
+    0 10px 22px rgba(0,0,0,0.10) !important;
+}
+a[data-disabled="true"]{
+  opacity: 0.60 !important;
+  filter: grayscale(8%);
+}
+
+/* Reduce noise: opening hours text below card */
+.opening-hours-card + p,
+.opening-hours-card ~ p{
+  margin-top: 14px !important;
+}
+
+/* Language toggle: align top-right, refined */
+.language-toggle,
+.lang-toggle,
+#languageToggle{
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Floating WhatsApp: slightly more luxe */
+.wa-float{
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* Responsive: keep air */
+@media (max-width: 520px){
+  .opening-hours-card{ padding: 22px 18px !important; border-radius: 20px !important; }
+  .appt-field{ padding: 14px 14px !important; border-radius: 16px !important; }
+  .appointment-action a{ height: 54px !important; }
+}
+
+
+/* ============================= */
+/* Header – Make Appointment     */
+/* ============================= */
+.appointment-nav-link{
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(216,167,177,0.95), rgba(255,225,180,0.95));
+  color: #3b2f35;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+.appointment-nav-link:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.16);
+}
+
+
+/* ============================= */
+/* Header nav – Make Appointment */
+/* ============================= */
+.nav-appointment-link{
+  font-weight: 600;
+  position: relative;
+}
+.nav-appointment-link::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(216,167,177,0.9), rgba(255,225,180,0.9));
+  transition: width .25s ease;
+}
+.nav-appointment-link:hover::after{
+  width: 100%;
+}
+
+
+/* ============================= */
+/* Nav: active state + mobile order */
+/* ============================= */
+header nav a.active,
+header nav a[aria-current="page"]{
+  position: relative;
+  font-weight: 700;
+}
+header nav a.active::after,
+header nav a[aria-current="page"]::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(216,167,177,0.9), rgba(255,225,180,0.9));
+  opacity: 0.9;
+}
+
+/* Mobile: keep "Make Appointment" prominent */
+@media (max-width: 768px){
+  /* Works when the menu list is flex (most common). Safe even if not. */
+  .nav-appointment{ order: 2; } /* right after Home */
+}
+
+
+/* ============================= */
+/* Header nav: Make Appointment  */
+/* ============================= */
+#primary-nav .nav-appointment-link{
+  font-weight: 600;
+  position: relative;
+}
+#primary-nav .nav-appointment-link::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background: linear-gradient(90deg, rgba(216,167,177,0.9), rgba(255,225,180,0.9));
+  transition: width .25s ease;
+}
+#primary-nav .nav-appointment-link:hover::after{ width:100%; }
+
+/* ============================= */
+/* Appointment section background */
+/* ============================= */
+#appointment{
+  position: relative;
+  background:
+    linear-gradient(rgba(110,95,105,0.85), rgba(110,95,105,0.85)),
+    url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  padding: 100px 0 120px;
+}
+#appointment .section-title h2,
+#appointment .section-title p{
+  color: #ffffff;
+}
+
+/* ============================= */
+/* Appointment hero text         */
+/* ============================= */
+#appointment .appointment-hero{
+  text-align: center;
+  margin-bottom: 26px;
+}
+#appointment .appointment-hero h2{
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+#appointment .appointment-hero p{
+  margin: 6px 0;
+  font-size: 18px;
+  opacity: 0.95;
+}
+#appointment .appointment-hero p:last-child{
+  margin-top: 22px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* ============================= */
+/* Global background alignment   */
+/* ============================= */
+html, body{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Any section using image backgrounds should align consistently */
+.hero,
+.services-section,
+.price-list-section,
+.payment-section,
+.faq-section,
+#appointment{
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: scroll !important; /* remove 'fixed' artifacts */
+}
+
+/* Make background sections full-width (avoid boxed background look) */
+.price-list-section,
+.payment-section,
+.faq-section{
+  border-radius: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Keep inner content nicely centered */
+.price-list-section > .container,
+.payment-section > .container,
+.faq-section > .container,
+.services-section > .container,
+#appointment > .container{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+
+/* ============================= */
+/* Appointment: full-bleed bg     */
+/* ============================= */
+#appointment{
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  max-width: none !important;
+  border-radius: 0 !important;
+  overflow: hidden; /* keep edges clean */
+}
+
+/* Ensure inner container stays centered */
+#appointment > .container{
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+/* Prevent any nested blocks from painting their own bg */
+#appointment .section-title,
+#appointment .appointment-hero{
+  background: transparent !important;
+}
+
+
+/* ============================= */
+/* Remove hanger-like duplicates */
+/* ============================= */
+.gallery-section,
+.cta{
+  background-image: none !important;
+  background: linear-gradient(135deg, rgba(110,95,105,0.92), rgba(216,167,177,0.22)) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+/* Ensure carousel active slide is visible */
+.gallery-carousel .carousel-slide.active{
+  opacity: 1 !important;
+  transform: scale(1.0) !important;
+  z-index: 2 !important;
+}
+
+
+/* ============================= */
+/* Mobile: align Date & Time     */
+/* ============================= */
+@media (max-width: 768px){
+  /* Stack fields cleanly on mobile */
+  .appt-row{
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Prevent weird shrinking/offset */
+  .appt-field{ 
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .appt-field input,
+  .appt-field select,
+  .time-display{
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* iOS date input alignment */
+  input[type="date"]{
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: left;
+  }
+}
+
+
+/* ============================= */
+/* Safeguard: time selectable   */
+/* ============================= */
+#appointment select{
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
 </style>
 </head>
 <body class="english-lang">
@@ -1947,18 +3027,18 @@ p{margin:0 0 12px;}
 </div>
 <nav id="primary-nav">
 <a class="english" href="#home">Home</a>
- <a class="chinese" href="#home">首页</a>
- <a class="english" href="#services">Services</a>
- <a class="chinese" href="#services">服务项目</a>
- <a class="english" href="#pricing">Pricing</a>
- <a class="chinese" href="#pricing">价格表</a>
- <a class="english" href="#payment">Payment</a>
- <a class="chinese" href="#payment">支付方式</a>
- <a class="english" href="#faqs">FAQ</a>
- <a class="chinese" href="#faqs">常见问题</a>
- <a class="english" href="#contact">Contact</a>
- <a class="chinese" href="#contact">联系我们</a>
- </nav>
+<a class="chinese" href="#home">首页</a>
+<a class="english" href="#services">Services</a>
+<a class="chinese" href="#services">服务项目</a>
+<a class="english" href="#pricing">Pricing</a>
+<a class="chinese" href="#pricing">价格表</a>
+<a class="english" href="#payment">Payment</a>
+<a class="chinese" href="#payment">支付方式</a>
+<a class="english" href="#faqs">FAQ</a>
+<a class="chinese" href="#faqs">常见问题</a>
+<a class="english nav-appointment-link" href="#appointment">Make Appointment</a><a class="english" href="#contact">Contact</a>
+<a class="chinese nav-appointment-link" href="#appointment">预约</a><a class="chinese" href="#contact">联系我们</a>
+</nav>
 <div aria-label="Header actions" class="header-actions">
 <div class="language-selector">
 <button aria-pressed="true" class="lang-btn active" id="btnEnglish" type="button">English</button>
@@ -2366,7 +3446,37 @@ p{margin:0 0 12px;}
 </div>
 </div>
 </section>
-<section class="contact-info" id="contact">
+<section class="section appointment-section" id="appointment"><div class="container"><div class="section-title appointment-hero"><h2><span class="english">Make an Appointment Now</span><span class="chinese">立即预约</span></h2><p><span class="english">Monday – Sunday 11:00 AM – 10:00 PM</span><span class="chinese">周一至周日 11:00 AM – 10:00 PM</span></p><p><span class="english">Appointments are recommended to ensure availability.</span><span class="chinese">建议提前预约以确保有空档。</span></p><p><span class="english">Contact us today for a consultation and exact pricing for your specific needs.</span><span class="chinese">欢迎联系我们咨询，并获取符合您需求的准确报价。</span></p></div><div class="opening-hours-card" id="openingHours">
+<div class="hours-header">
+<h4 class="chinese">营业时间</h4>
+<span class="chinese">检查中…</span>
+</div>
+<div class="appt-form" id="apptForm">
+<div class="appt-row">
+<div class="appt-field">
+<label class="english" for="apptDate">Select date</label>
+<label class="chinese" for="apptDate">选择日期</label>
+<input id="apptDate" name="apptDate" type="date"/>
+</div>
+<div class="appt-field">
+<label class="english" for="apptTime">Select time</label>
+<label class="chinese" for="apptTime">选择时间</label>
+<div class="time-picker" id="timePicker">
+<input id="apptTime" name="apptTime" type="hidden" value=""/>
+<button aria-expanded="false" aria-haspopup="listbox" class="time-display" id="apptTimeDisplay" type="button">
+<span class="time-display-text english">Choose a time</span>
+<span class="time-display-text chinese">请选择时间</span>
+<span aria-hidden="true" class="time-caret">▾</span>
+</button>
+<div aria-label="Time slots" class="time-dropdown" id="apptTimeDropdown" role="listbox"></div>
+</div>
+</div>
+</div>
+<div class="appointment-action">
+<a class="btn appointment-btn" data-disabled="true" href="https://wa.me/60123608968" id="whatsappBookBtn">Select date &amp; time to continue</a>
+</div>
+</div>
+</div></div></section><section class="section appointment-section" id="appointment"><div class="container"></div></section><section class="contact-info" id="contact">
 <h4 class="english">Contact Information</h4>
 <h4 class="chinese">联系信息</h4>
 <div class="contact-content">
@@ -2416,384 +3526,581 @@ p{margin:0 0 12px;}
 <span class="english">Google Map</span>
 <span class="chinese">谷歌地图</span>
 </a>
-<a class="map-waze-btn" href="https://waze.com/ul?q=R%26F%20Princess%20Cove%20Johor%20Bahru&navigate=yes" target="_blank"><span class="english">Waze</span><span class="chinese">Waze导航</span></a>
+<a class="map-waze-btn" href="https://waze.com/ul?ll=1.4590,103.7679&amp;navigate=yes" target="_blank"><span class="english">Waze</span><span class="chinese">Waze导航</span></a>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section class="cta">
-<h3 class="english">Get Your Personalized Quote</h3>
-<h3 class="chinese">获取个性化报价</h3>
-<p class="english">Contact us today for a consultation and exact pricing for your specific needs.</p>
-<p class="chinese">立即联系我们，根据您的具体需求获取咨询和确切报价。</p>
-<div class="btn-container">
-<a class="btn english" href="https://wa.me/60123608968">Get Quote via WhatsApp</a>
-<a class="btn chinese" href="https://wa.me/60123608968">WhatsApp获取报价</a>
-</div>
-</section>
+
 <footer>
 <div class="english">© 2026 AnaCoo Tailor · Modern Bespoke Tailoring</div>
 <div class="chinese">© 2026 安娜库定制裁缝 · 现代高级定制</div>
 <div class="social-icons">
-<a aria-label="Instagram" href="#"><i aria-hidden="true" class="fab fa-instagram"></i></a>
-<a aria-label="Facebook" href="#"><i aria-hidden="true" class="fab fa-facebook"></i></a>
+<a aria-label="Instagram" href="https://www.instagram.com/anacoo_tailor?igsh=YTN2YnkxdDl2YnY5&utm_source=qr"><i aria-hidden="true" class="fab fa-instagram"></i></a>
+<a aria-label="Facebook" href="https://www.facebook.com/share/1C6ar95j1t/?mibextid=wwXIfr"><i aria-hidden="true" class="fab fa-facebook"></i></a>
 <a aria-label="WhatsApp" href="https://wa.me/60123608968"><i aria-hidden="true" class="fab fa-whatsapp"></i></a>
 </div>
 </footer>
 <script>
-// CAROUSEL FUNCTIONALITY
+/* ================================= */
+/* Appointment date/time + WhatsApp  */
+/* (Custom time picker to avoid native bottom sheet) */
+/* ================================= */
+(function(){
+  const dateEl = document.getElementById('apptDate');
+  const timeHidden = document.getElementById('apptTime'); // hidden input
+  const dropdown = document.getElementById('apptTimeDropdown');
+  const displayBtn = document.getElementById('apptTimeDisplay');
+  const waBtn  = document.getElementById('whatsappBookBtn');
 
-// Respect reduced motion preference
-const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!dateEl || !timeHidden || !dropdown || !displayBtn) return;
 
-// Mobile menu toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const primaryNav = document.getElementById('primary-nav');
+  const OPEN_HOUR = 11;
+  const CLOSE_HOUR = 22;
 
-function openMenu() {
-    document.body.classList.add('nav-open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    menuToggle.setAttribute('aria-label', 'Close menu');
-}
+  const pad2 = n => String(n).padStart(2,'0');
 
-function closeMenu() {
-    document.body.classList.remove('nav-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Open menu');
-}
+  function isChinese(){ return document.body.classList.contains('chinese-lang'); }
 
-function toggleMenu() {
-    const isOpen = document.body.classList.contains('nav-open');
-    if (isOpen) closeMenu();
-    else openMenu();
-}
+  function to12h(h, m){
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    let hh = h % 12; if(hh === 0) hh = 12;
+    return `${hh}:${pad2(m)} ${ampm}`;
+  }
 
-if (menuToggle && primaryNav) {
-    menuToggle.addEventListener('click', toggleMenu);
+  function formatDatePretty(yyyy_mm_dd){
+    const dt = new Date(yyyy_mm_dd + 'T00:00:00');
+    return dt.toLocaleDateString([], { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  }
 
-    // Close menu when a nav link is clicked (mobile)
-    primaryNav.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', () => {
-            if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-        });
-    });
+  function buildSlots(forDate){
+    const slots = [];
+    for(let h=OPEN_HOUR; h<=CLOSE_HOUR; h++){
+      for(let m=0; m<60; m+=30){
+        if(h === CLOSE_HOUR && m > 0) continue; // keep 22:00 only
+        slots.push({h, m});
+      }
+    }
+    if(!forDate) return slots;
 
-    // Close menu on Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-    });
+    const now = new Date();
+    const isToday =
+      forDate.getFullYear() === now.getFullYear() &&
+      forDate.getMonth() === now.getMonth() &&
+      forDate.getDate() === now.getDate();
 
-    // Close menu when clicking outside nav (mobile)
-    document.addEventListener('click', (e) => {
-        if (!document.body.classList.contains('nav-open')) return;
-        const isClickInside = primaryNav.contains(e.target) || menuToggle.contains(e.target);
-        if (!isClickInside) closeMenu();
-    });
-}
+    if(!isToday) return slots;
 
-// Back to top button behavior
-const backToTopBtn = document.querySelector('.back-to-top');
-function updateBackToTop() {
-    if (!backToTopBtn) return;
-    if (window.scrollY > 500) backToTopBtn.classList.add('show');
-    else backToTopBtn.classList.remove('show');
-}
-window.addEventListener('scroll', updateBackToTop, { passive: true });
-updateBackToTop();
+    const nowMinutes = now.getHours()*60 + now.getMinutes();
+    return slots.filter(s => (s.h*60 + s.m) > nowMinutes);
+  }
 
-if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
-}
+  function setDateBounds(){
+    const today = new Date();
+    const min = new Date(today);
+    const max = new Date(today);
+    max.setDate(max.getDate() + 90);
 
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.carousel-dot');
-const totalSlides = slides.length;
-let slideInterval;
+    const fmt = d => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+    dateEl.min = fmt(min);
+    dateEl.max = fmt(max);
+    if(!dateEl.value) dateEl.value = fmt(today);
+  }
 
-// Initialize carousel
-function initCarousel() {
-    // Set first slide as active
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-    
-    // Start auto-slide (skip if user prefers reduced motion)
-    if (!prefersReducedMotion) startAutoSlide();
-}
+  function closeDropdown(){
+    dropdown.classList.remove('open');
+    displayBtn.setAttribute('aria-expanded','false');
+    document.body.classList.remove('time-open');
+  }
 
-// Go to specific slide
-function goToSlide(n) {
-    // Remove active class from all slides and dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Update current slide
-    currentSlide = n;
-    
-    // Add active class to current slide and dot
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-}
+  function openDropdown(){
+    dropdown.classList.add('open');
+    displayBtn.setAttribute('aria-expanded','true');
+    document.body.classList.add('time-open');
+  }
 
-// Next slide
-function nextSlide() {
-    let next = currentSlide + 1;
-    if (next >= totalSlides) next = 0;
-    goToSlide(next);
-}
+  function renderTimeOptions(){
+    dropdown.innerHTML = '';
+    const selectedDate = dateEl.value ? new Date(dateEl.value + 'T00:00:00') : null;
+    const slots = buildSlots(selectedDate);
 
-// Previous slide
-function prevSlide() {
-    let prev = currentSlide - 1;
-    if (prev < 0) prev = totalSlides - 1;
-    goToSlide(prev);
-}
-
-// Start auto-slide
-function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-}
-
-// Stop auto-slide
-function stopAutoSlide() {
-    clearInterval(slideInterval);
-}
-
-// Event listeners for carousel
-document.querySelector('.carousel-next').addEventListener('click', () => {
-    stopAutoSlide();
-    nextSlide();
-    startAutoSlide();
-});
-
-document.querySelector('.carousel-prev').addEventListener('click', () => {
-    stopAutoSlide();
-    prevSlide();
-    startAutoSlide();
-});
-
-// Dot navigation
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        stopAutoSlide();
-        goToSlide(index);
-        startAutoSlide();
-    });
-});
-
-// Pause auto-slide on hover
-const carousel = document.querySelector('.gallery-carousel');
-carousel.addEventListener('mouseenter', stopAutoSlide);
-carousel.addEventListener('touchstart', stopAutoSlide);
-carousel.addEventListener('mouseleave', () => { if (!prefersReducedMotion) startAutoSlide(); });
-carousel.addEventListener('touchend', () => { if (!prefersReducedMotion) startAutoSlide(); });
-
-// Initialize carousel
-document.addEventListener('DOMContentLoaded', initCarousel);
-
-// Language switching functions
-const btnEnglish = document.getElementById('btnEnglish');
-const btnChinese = document.getElementById('btnChinese');
-
-function setLanguage(lang) {
-    // Preserve other body classes (e.g., nav-open), only toggle language classes
-    document.body.classList.remove('english-lang', 'chinese-lang');
-    document.body.classList.add(lang === 'zh' ? 'chinese-lang' : 'english-lang');
-
-    if (btnEnglish && btnChinese) {
-        const isZh = (lang === 'zh');
-        btnEnglish.classList.toggle('active', !isZh);
-        btnChinese.classList.toggle('active', isZh);
-        btnEnglish.setAttribute('aria-pressed', String(!isZh));
-        btnChinese.setAttribute('aria-pressed', String(isZh));
+    if(slots.length === 0){
+      const empty = document.createElement('div');
+      empty.style.padding = '10px 10px';
+      empty.style.opacity = '0.7';
+      empty.textContent = isChinese() ? '今天已无可选时段' : 'No available slots today';
+      dropdown.appendChild(empty);
+      timeHidden.value = '';
+      updateWhatsAppLink();
+      return;
     }
 
-    document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
-    document.title = (lang === 'zh') ? 'AnaCoo Tailor - 现代高级定制' : 'AnaCoo Tailor - Modern Bespoke Tailoring';
-}
+    slots.forEach(s => {
+      const val = `${pad2(s.h)}:${pad2(s.m)}`;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'time-option';
+      btn.setAttribute('role','option');
+      btn.dataset.value = val;
+      btn.innerHTML = `<span>${to12h(s.h, s.m)}</span><span style="opacity:.65">${val}</span>`;
+      btn.addEventListener('click', () => {
+        timeHidden.value = val;
 
-function switchToEnglish() { setLanguage('en'); }
-function switchToChinese() { setLanguage('zh'); }
+        // Convert to 12-hour AM/PM for display
+        const parts = val.split(':');
+        let h = parseInt(parts[0], 10);
+        const m = parts[1];
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12; if(h === 0) h = 12;
+        const displayVal = `${h}:${m} ${ampm}`;
 
-// Add both click and touch events for iOS compatibility
-if (btnEnglish) {
-    btnEnglish.addEventListener('click', switchToEnglish);
-    btnEnglish.addEventListener('touchstart', function (e) {
-        e.preventDefault();
-        switchToEnglish();
-    }, { passive: false });
-}
+        displayBtn.querySelectorAll('.time-display-text').forEach(el => {
+          el.textContent = displayVal;
+        });
 
-if (btnChinese) {
-    btnChinese.addEventListener('click', switchToChinese);
-    btnChinese.addEventListener('touchstart', function (e) {
-        e.preventDefault();
-        switchToChinese();
-    }, { passive: false });
-}
-
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if(targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }
+        dropdown.querySelectorAll('.time-option').forEach(o => o.classList.remove('active'));
+        btn.classList.add('active');
+        closeDropdown();
+        updateWhatsAppLink();
+      });
+      dropdown.appendChild(btn);
     });
-});
 
-// iOS specific fix: Force reflow after language switch
-function forceReflow() {
-    document.body.style.display = 'none';
-    document.body.offsetHeight; // Trigger reflow
-    document.body.style.display = '';
-}
+    // If current value not valid, reset display
+    const has = [...dropdown.querySelectorAll('.time-option')].some(b => b.dataset.value === timeHidden.value);
+    if(!has){
+      timeHidden.value = '';
+      displayBtn.querySelector('.time-display-text.english').textContent = 'Choose a time';
+      displayBtn.querySelector('.time-display-text.chinese').textContent = '请选择时间';
+    }else{
+      // mark active
+      const active = dropdown.querySelector(`.time-option[data-value="${timeHidden.value}"]`);
+      if(active) active.classList.add('active');
+      displayBtn.querySelectorAll('.time-display-text').forEach(el => el.textContent = timeHidden.value);
+    }
+  }
 
-// Add to language switching functions
-var originalSwitchToEnglish = switchToEnglish;
-var originalSwitchToChinese = switchToChinese;
+  function updateWhatsAppLink(){
+    if(!waBtn) return;
 
-switchToEnglish = function() {
-    originalSwitchToEnglish();
-    setTimeout(forceReflow, 50);
-};
+    const dateVal = dateEl.value;
+    const timeVal = timeHidden.value;
 
-switchToChinese = function() {
-    originalSwitchToChinese();
-    setTimeout(forceReflow, 50);
-};
+    const labelDisabledEn = 'Select date & time to continue';
+    const labelDisabledZh = '请选择日期与时间';
+    const labelEnabledEn  = 'Confirm Appointment via WhatsApp';
+    const labelEnabledZh  = '通过 WhatsApp 确认预约';
 
-// Preload background images for better performance
-window.addEventListener('load', function() {
-    const bgImages = [
-        'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=1600&q=80',
-        'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=80',
-        'https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=1600&q=80',
-        'https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=1600&q=80',
-        'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80',
-        'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80',
-        'https://images.unsplash.com/photo-1567401893418-4193a46d9c7c?auto=format&fit=crop&w=1600&q=80'
-    ];
-    
-    // Preload carousel images
-    const carouselImages = [
-        'https://raw.githubusercontent.com/JunyxTan/AnaCoo-Project/main/assets/Img%205.jpeg',
-        'https://raw.githubusercontent.com/JunyxTan/AnaCoo-Project/main/assets/Img%202.jpeg',
-        'https://raw.githubusercontent.com/JunyxTan/AnaCoo-Project/main/assets/Img%204.jpeg',
-        'https://raw.githubusercontent.com/JunyxTan/AnaCoo-Project/main/assets/Img%203.jpeg',
-        'https://raw.githubusercontent.com/JunyxTan/AnaCoo-Project/main/assets/Img%201.jpeg'
-    ];
-    
-    bgImages.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
-    
-    carouselImages.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
-});
-</script>
-<!-- Back to top button -->
-<button aria-label="Back to top" class="back-to-top" title="Back to top">
-<i aria-hidden="true" class="fas fa-arrow-up"></i>
-</button>
-<script>
-  document.querySelectorAll(".faq-question").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const answer = btn.nextElementSibling;
-      const icon = btn.querySelector(".faq-icon");
+    if(!dateVal || !timeVal){
+      waBtn.dataset.disabled = 'true';
+      waBtn.innerText = isChinese() ? labelDisabledZh : labelDisabledEn;
+      return;
+    }
+    waBtn.dataset.disabled = 'false';
+    waBtn.innerText = isChinese() ? labelEnabledZh : labelEnabledEn;
 
-      if (answer.style.display === "block") {
-        answer.style.display = "none";
-        icon.textContent = "+";
-      } else {
-        answer.style.display = "block";
-        icon.textContent = "−";
-      }
-    });
+    const niceDate = formatDatePretty(dateVal);
+
+// Format time to 12-hour AM/PM for WhatsApp
+const p = timeVal.split(':');
+let h = parseInt(p[0], 10);
+const m = p[1];
+const ap = h >= 12 ? 'PM' : 'AM';
+h = h % 12 || 12;
+const formattedTime = `${h}:${m} ${ap}`;
+
+    const rawEn =
+`Hi AnaCoo Tailor,
+
+I would like to make an appointment for alteration service.
+
+✧ Date: ${niceDate}
+✧ Time: ${formattedTime}
+
+Please let me know if this slot is available. Thank you.`;
+
+    const rawZh =
+`您好，AnaCoo 裁缝店，
+
+我想预约衣服修改服务。
+
+✧ 日期：${niceDate}
+✧ 时间：${formattedTime}
+
+请帮我确认这个时间是否可以，谢谢。`;
+
+    const raw = isChinese() ? rawZh : rawEn;
+
+    try{
+      const url = new URL(waBtn.href);
+      url.searchParams.set('text', raw);
+      waBtn.href = url.toString();
+    }catch(e){
+      const base = waBtn.href.split('?')[0];
+      waBtn.href = `${base}?text=${encodeURIComponent(raw)}`;
+    }
+  }
+
+  function guardClick(e){
+    if(!waBtn) return;
+    if(waBtn.dataset.disabled === 'true'){
+      e.preventDefault();
+      alert(isChinese() ? '请选择预约日期和时间。' : 'Please select an appointment date and time first.');
+    }
+  }
+
+  // Toggle dropdown
+  displayBtn.addEventListener('click', () => {
+    const isOpen = dropdown.classList.contains('open');
+    if(isOpen) closeDropdown(); else openDropdown();
   });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if(!displayBtn.contains(e.target) && !dropdown.contains(e.target)){
+      closeDropdown();
+    }
+  });
+
+  // Init
+  setDateBounds();
+  renderTimeOptions();
+  updateWhatsAppLink();
+
+  dateEl.addEventListener('change', () => {
+    renderTimeOptions();
+    updateWhatsAppLink();
+  });
+  if(waBtn) waBtn.addEventListener('click', guardClick);
+
+  // Update labels when language changes
+  const btnEn = document.getElementById('btnEnglish');
+  const btnZh = document.getElementById('btnChinese');
+  [btnEn, btnZh].forEach(b => {
+    if(!b) return;
+    b.addEventListener('click', () => setTimeout(updateWhatsAppLink, 0));
+  });
+})();
 </script>
-
 <script>
+/* ================================= */
+/* Floating WhatsApp: prefill + hide  */
+/* ================================= */
 (function(){
-  const nav = document.getElementById('primary-nav');
-  if(!nav) return;
+  const floatBtn = document.getElementById('waFloatBtn');
+  if(!floatBtn) return;
 
-  const navLinks = Array.from(nav.querySelectorAll('a[href^="#"]'));
-  const ids = Array.from(new Set(navLinks.map(a => (a.getAttribute('href')||'').slice(1)).filter(Boolean)));
-  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+  // Try to use the same number already in the href (https://wa.me/<number>)
+  const base = floatBtn.href.split('?')[0];
 
-  function setActive(id){
-    navLinks.forEach(a => {
-      const match = (a.getAttribute('href') || '').slice(1) === id;
-      a.classList.toggle('active', match);
-      a.setAttribute('aria-current', match ? 'page' : 'false');
+  function isChinese(){ return document.body.classList.contains('chinese-lang'); }
+
+  function setPrefill(){
+    const msgEn =
+`Hi AnaCoo Tailor,
+
+I would like to enquire about alteration service. Could you please advise?
+
+Thank you.`;
+
+    const msgZh =
+`您好，AnaCoo 裁缝店，
+
+我想咨询衣服修改服务，请问可以帮忙了解一下吗？
+
+谢谢。`;
+
+    const msg = isChinese() ? msgZh : msgEn;
+
+    // WhatsApp supports ?text=... (must be URL-encoded)
+    floatBtn.href = base + '?text=' + encodeURIComponent(msg);
+  }
+
+  // Auto-hide when the in-card WhatsApp CTA is visible
+  function setupAutoHide(){
+    const cardBtn = document.getElementById('whatsappBookBtn');
+    if(!cardBtn || !('IntersectionObserver' in window)) return;
+
+    const obs = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if(!e) return;
+      if(e.isIntersecting){
+        floatBtn.classList.add('wa-hide');
+      }else{
+        floatBtn.classList.remove('wa-hide');
+      }
+    }, { threshold: 0.35 });
+
+    obs.observe(cardBtn);
+  }
+
+  // Update on language toggle (if present)
+  function hookLanguageButtons(){
+    const btnEn = document.getElementById('btnEnglish');
+    const btnZh = document.getElementById('btnChinese');
+    [btnEn, btnZh].forEach(b => {
+      if(!b) return;
+      b.addEventListener('click', () => setTimeout(setPrefill, 0));
     });
   }
 
-  // Smooth update on click (optional)
-  navLinks.forEach(a => {
-    a.addEventListener('click', () => {
-      const id = (a.getAttribute('href') || '').slice(1);
-      if(id) setActive(id);
+  setPrefill();
+  setupAutoHide();
+  hookLanguageButtons();
+})();
+</script>
+<script>
+/* ================================= */
+/* Language toggle (English / 中文)   */
+/* ================================= */
+(function(){
+  const btnEn = document.getElementById('btnEnglish');
+  const btnZh = document.getElementById('btnChinese');
+  if(!btnEn || !btnZh) return;
+
+  function setLang(lang){
+    const isZh = (lang === 'zh');
+    document.body.classList.toggle('chinese-lang', isZh);
+
+    // Visual state
+    btnEn.classList.toggle('active', !isZh);
+    btnZh.classList.toggle('active', isZh);
+
+    // Accessibility state
+    btnEn.setAttribute('aria-pressed', String(!isZh));
+    btnZh.setAttribute('aria-pressed', String(isZh));
+  }
+
+  // Init: default to English unless body already has chinese-lang
+  setLang(document.body.classList.contains('chinese-lang') ? 'zh' : 'en');
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnZh.addEventListener('click', () => setLang('zh'));
+})();
+</script>
+<script>
+// Smooth scroll offset for fixed header
+(function(){
+  const header = document.querySelector('header');
+  if(!header) return;
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 10;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     });
   });
+})();
+</script>
+<script>
+/* ================================= */
+/* Nav: language label + scroll spy  */
+/* ================================= */
+(function(){
+  const apptLink = document.querySelector('a.nav-appointment-link[href="#appointment"]');
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('header nav a[href^="#"]'));
 
-  // Observe scrolling
+  function isChinese(){ return document.body.classList.contains('chinese-lang'); }
+
+  function syncAppointmentLabel(){
+    if(!apptLink) return;
+    const en = apptLink.getAttribute('data-en') || 'Make Appointment';
+    const zh = apptLink.getAttribute('data-zh') || '预约';
+    apptLink.textContent = isChinese() ? zh : en;
+  }
+
+  function setActive(link){
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      a.removeAttribute('aria-current');
+    });
+    if(link){
+      link.classList.add('active');
+      link.setAttribute('aria-current','page');
+    }
+  }
+
+  // Scroll spy using IntersectionObserver
   if('IntersectionObserver' in window && sections.length){
-    const observer = new IntersectionObserver((entries) => {
-      // pick the most visible intersecting section
+    const map = new Map();
+    sections.forEach(sec => map.set(sec.id, sec));
+
+    const obs = new IntersectionObserver((entries) => {
+      // pick the most visible entry
       const visible = entries
         .filter(e => e.isIntersecting)
         .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if(visible && visible.target && visible.target.id){
-        setActive(visible.target.id);
-      }
-    }, { root: null, threshold: [0.35, 0.5, 0.65] });
 
-    sections.forEach(sec => observer.observe(sec));
+      if(!visible) return;
 
-    // initial
-    const hash = (location.hash || '').slice(1);
-    if(hash && document.getElementById(hash)) setActive(hash);
-    else setActive(sections[0].id);
-  } else {
-    // Fallback: activate based on scroll position
-    function onScroll(){
-      const y = window.scrollY + 120;
-      let current = sections[0]?.id;
-      sections.forEach(sec => {
-        if(sec.offsetTop <= y) current = sec.id;
-      });
-      if(current) setActive(current);
-    }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
+      const id = visible.target.id;
+      const link = navLinks.find(a => a.getAttribute('href') === '#' + id);
+      if(link) setActive(link);
+    }, { root: null, threshold: [0.25, 0.35, 0.5, 0.6] });
+
+    sections.forEach(sec => obs.observe(sec));
   }
+
+  // Re-sync label when language buttons are clicked
+  const btnEn = document.getElementById('btnEnglish');
+  const btnZh = document.getElementById('btnChinese');
+  [btnEn, btnZh].forEach(b => {
+    if(!b) return;
+    b.addEventListener('click', () => setTimeout(syncAppointmentLabel, 0));
+  });
+
+  // Initial
+  syncAppointmentLabel();
+})();
+</script>
+<script>
+/* ================================= */
+/* Home carousel auto-slide          */
+/* ================================= */
+(function(){
+  const slides = Array.from(document.querySelectorAll('.gallery-carousel .carousel-slide'));
+  if(!slides.length) return;
+
+  let idx = slides.findIndex(s => s.classList.contains('active'));
+  if(idx < 0) idx = 0;
+
+  function show(i){
+    slides.forEach((s, k) => {
+      if(k === i){
+        s.classList.add('active');
+        s.style.opacity = '1';
+        s.style.transform = 'scale(1.0)';
+        s.style.zIndex = '2';
+      }else{
+        s.classList.remove('active');
+        s.style.opacity = '0';
+        s.style.transform = 'scale(1.05)';
+        s.style.zIndex = '1';
+      }
+    });
+  }
+
+  // init visibility
+  show(idx);
+
+  // rotate
+  const INTERVAL_MS = 4200;
+  let timer = setInterval(() => {
+    idx = (idx + 1) % slides.length;
+    show(idx);
+  }, INTERVAL_MS);
+
+  // pause on hover (desktop)
+  const carousel = document.querySelector('.gallery-carousel');
+  if(carousel){
+    carousel.addEventListener('mouseenter', () => { clearInterval(timer); });
+    carousel.addEventListener('mouseleave', () => {
+      timer = setInterval(() => {
+        idx = (idx + 1) % slides.length;
+        show(idx);
+      }, INTERVAL_MS);
+    });
+  }
+
+  // re-init on tab visibility change
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden){
+      clearInterval(timer);
+    }else{
+      clearInterval(timer);
+      timer = setInterval(() => {
+        idx = (idx + 1) % slides.length;
+        show(idx);
+      }, INTERVAL_MS);
+    }
+  });
 })();
 </script>
 
-<!-- Floating WhatsApp Button -->
-<a class="floating-whatsapp"
-   href="https://wa.me/60123608968"
-   target="_blank"
-   aria-label="Chat on WhatsApp">
-   <svg viewBox="0 0 32 32" aria-hidden="true">
-     <path d="M19.11 17.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.16-.43-2.2-1.37-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.44-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.63 1.11 2.81.14.18 1.93 2.95 4.67 4.13.65.28 1.16.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.07-.11-.25-.18-.52-.32zM16.04 3C9.4 3 4 8.4 4 15.04c0 2.34.68 4.52 1.86 6.36L4 29l7.79-1.8a12 12 0 0 0 4.25.77C22.68 28 28.08 22.6 28.08 15.96 28.08 9.32 22.68 3 16.04 3zm0 22.07c-1.37 0-2.7-.29-3.93-.86l-.28-.13-4.62 1.07 1.02-4.5-.14-.29a9.92 9.92 0 0 1-1.06-4.38c0-5.52 4.49-10.01 10.01-10.01s10.01 4.49 10.01 10.01-4.49 10.01-10.01 10.01z"/>
-   </svg>
-</a>
+<script>
+/* ============================= */
+/* Fix: enable time selection   */
+/* ============================= */
+(function(){
+  const dateInput = document.querySelector('#appointment input[type="date"]');
+  const timeSelect = document.querySelector('#appointment select');
+
+  if(!dateInput || !timeSelect) return;
+
+  function enableTime(){
+    timeSelect.disabled = false;
+    timeSelect.style.pointerEvents = 'auto';
+    timeSelect.style.opacity = '1';
+  }
+
+  // Enable immediately and on date change
+  enableTime();
+  dateInput.addEventListener('change', enableTime);
+})();
+</script>
+
+
+<script>
+/* ================================= */
+/* Auto-disable past time slots      */
+/* ================================= */
+(function(){
+  const dateInput = document.querySelector('#appointment input[type="date"]');
+  const timeSelect = document.querySelector('#appointment select');
+
+  if(!dateInput || !timeSelect) return;
+
+  function toMinutes(t){
+    // expects format "HH:MM AM/PM"
+    const parts = t.trim().split(' ');
+    if(parts.length < 2) return null;
+    let [h,m] = parts[0].split(':').map(Number);
+    const ampm = parts[1];
+    if(ampm === 'PM' && h !== 12) h += 12;
+    if(ampm === 'AM' && h === 12) h = 0;
+    return h * 60 + m;
+  }
+
+  function updateTimeOptions(){
+    const selectedDate = dateInput.value;
+    if(!selectedDate) return;
+
+    const today = new Date();
+    const selDate = new Date(selectedDate + 'T00:00');
+
+    const isToday =
+      today.getFullYear() === selDate.getFullYear() &&
+      today.getMonth() === selDate.getMonth() &&
+      today.getDate() === selDate.getDate();
+
+    const nowMinutes = today.getHours() * 60 + today.getMinutes();
+
+    Array.from(timeSelect.options).forEach(opt => {
+      if(!opt.value) return;
+
+      const optMinutes = toMinutes(opt.textContent);
+      if(optMinutes === null) return;
+
+      if(isToday && optMinutes <= nowMinutes){
+        opt.disabled = true;
+      }else{
+        opt.disabled = false;
+      }
+    });
+  }
+
+  dateInput.addEventListener('change', updateTimeOptions);
+  timeSelect.addEventListener('focus', updateTimeOptions);
+
+  // Initial run
+  updateTimeOptions();
+})();
+</script>
 
 </body>
 </html>
